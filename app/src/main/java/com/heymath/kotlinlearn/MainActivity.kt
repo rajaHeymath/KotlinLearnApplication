@@ -18,6 +18,11 @@ class MainActivity : AppCompatActivity() {
     //   Github password token(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)
 //    https://www.androhub.com/working-with-git-in-android-studio/
 //    https://www.javatpoint.com/kotlin-for-loop
+    val age = 24
+    var name = "Yazhini";
+    val border = "%"
+    val timeToRepeat = 22
+    val layer = 5
 
     private val requestPermission =
         registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted: Boolean ->
@@ -33,28 +38,62 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val button = findViewById<Button>(R.id.clickMe)
+        printBirth()
+        printCakeCandle(age)
+        printCakeTop(age)
+        printCakeBotton(age, layer)
 
         button.setOnClickListener {
             onClickRequestPermission(button)
         }
 
+    }
 
-        fun View.showSnackbar(
-            view: View,
-            msg: String,
-            length: Int,
-            actionMessage: CharSequence?,
-            action: (View) -> Unit
-        ) {
-            val snackbar_view = Snackbar.make(view, msg, length)
-            if (actionMessage != null) {
-                snackbar_view.setAction(actionMessage) {
-                    action(this)
-                }.show()
-            } else {
-                snackbar_view.show()
-            }
+    fun printCakeTop(age: Int) {
+        repeat(age + 2) {
+            print("=")
         }
+        println()
+    }
+
+    fun printCakeBotton(age: Int, layers: Int) {
+        repeat(layers) {
+            repeat(age + 2) {
+                print("@")
+            }
+            println()
+        }
+
+    }
+
+    fun printBirth() {
+        printBorder(border, timeToRepeat)
+        println("Happy Birthday ${name}")
+        printBorder(border, timeToRepeat)
+        println("You are alreay ${age} days old, ${name}")
+
+    }
+
+    fun printCakeCandle(age: Int) {
+        print(" ")
+        repeat(age) {
+            print(",")
+        }
+        println()
+
+        print(" ")
+        repeat(age) {
+            print("|")
+        }
+        println()
+
+    }
+
+    fun printBorder(border2: String, time: Int) {
+        repeat(time) {
+            print(border2)
+        }
+        println()
 
     }
 
